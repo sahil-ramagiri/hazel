@@ -1,0 +1,6 @@
+target_sources( hazel
+    PUBLIC
+    ${CMAKE_CURRENT_LIST_DIR}/main.cpp
+)
+
+target_include_directories(hazel PUBLIC "${PROJECT_SOURCE_DIR}/include")

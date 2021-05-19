@@ -1,0 +1,6 @@
+[submodule "extern/spdlog"]
+	path = extern/spdlog
+	url = https://github.com/gabime/spdlog.git
+[submodule "extern/lodepng"]
+	path = extern/lodepng
+	url = https://github.com/lvandeve/lodepng.git
