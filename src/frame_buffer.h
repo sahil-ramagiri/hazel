@@ -14,10 +14,10 @@ public:
         buffer(new color[width * height]) {}
 
     // ~FrameBuffer() = default;
-    size_t width(){
+    size_t width() {
         return m_width;
     }
-    size_t height(){
+    size_t height() {
         return m_height;
     }
 
@@ -37,14 +37,20 @@ public:
             buffer[idx] = glm::clamp(buffer[idx], 0.0, 1.0);
         }
     }
-    void no_alpha(){
+    void no_alpha() {
         for (int idx = 0;idx < m_width * m_height;idx++) {
             buffer[idx].a = 1.0;
+        }
+    }
+    void gamma_correction() {
+        for (int idx = 0;idx < m_width * m_height;idx++) {
+            buffer[idx] = glm::sqrt(buffer[idx]);
         }
     }
 
     void dump_to_file(std::string file_name) {
         clamp();
+        gamma_correction();
         no_alpha();
         std::vector<unsigned char> image(m_width * m_height * 4, 0);
         // #pragma omp parallel for

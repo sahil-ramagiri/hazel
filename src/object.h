@@ -2,11 +2,14 @@
 
 #include "ray.h"
 
+class Material;
+
 struct Hit
 {
     double t;
     Ray ray;
     Vec3 point;
+    std::shared_ptr<Material> material;
     Vec3 normal;
     bool front_face;
 

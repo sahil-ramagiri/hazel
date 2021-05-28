@@ -2,11 +2,13 @@
 
 #include "vector"
 #include "object.h"
+#include "material.h"
 
 class Scene
 {
 private:
     std::vector<std::shared_ptr<Object>> objects;
+    std::vector<std::shared_ptr<Material>> materials;
 public:
     Scene(){}
     void add(std::shared_ptr<Object> obj){

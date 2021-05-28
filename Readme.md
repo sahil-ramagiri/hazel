@@ -14,3 +14,6 @@ A simple raytracer to brushup my c++ skills. Inspired from the [raytracing in on
 - scene, camera, renderer abstraction
 - antialiasing
 - openmp parallel execution
+
+![image](gallery/materials.png)
+- diffuse and metallic materials

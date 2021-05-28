@@ -26,11 +26,21 @@ int main()
 
     FrameBuffer fb{ image_width, image_height };
     Camera cam{2.0 * aspect_ratio, 2.0};
-    auto sphere = std::make_shared<Sphere>(Vec3{0.0,0.0,-1.0}, 0.5);
-    auto plane = std::make_shared<Sphere>(Vec3{0.0,-100.5,-1.0}, 100.0);
+
+    auto blue_diffuse = std::make_shared<Diffuse>(color(0.1,0.1,0.8,1.0));
+    auto green_diffuse = std::make_shared<Diffuse>(color(0.1,0.8,0.1,1.0));
+    auto silver_metal = std::make_shared<Metal>(color(0.8,0.8,0.8,1.0), 0.2);
+    auto bronze_metal = std::make_shared<Metal>(color(0.8,0.6,0.2,1.0), 0.0);
+
+    auto sphere = std::make_shared<Sphere>(Vec3{0.0,0.0,-1.0}, 0.5, blue_diffuse);
+    auto ground = std::make_shared<Sphere>(Vec3{0.0,-100.5,-1.0}, 100.0, green_diffuse);
+    auto left_sphere = std::make_shared<Sphere>(Vec3{-1.1,0.0,-1.0}, 0.5, silver_metal);
+    auto right_sphere = std::make_shared<Sphere>(Vec3{1.1,0.0,-1.0}, 0.5, bronze_metal);
     Scene scene{};
     scene.add(sphere);
-    scene.add(plane);
+    scene.add(ground);
+    scene.add(left_sphere);
+    scene.add(right_sphere);
     // Render
     render(scene, cam, fb);
     fb.dump_to_file("test.png");

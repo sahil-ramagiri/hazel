@@ -8,8 +8,10 @@ class Sphere : public Object
 private:
     Vec3 m_center;
     double m_radius;
+    std::shared_ptr<Material> m_material;
 public:
-    Sphere(Vec3 center, float radius): m_center(center), m_radius(radius)
+    Sphere(Vec3 center, float radius, std::shared_ptr<Material> material): 
+    m_center(center), m_radius(radius), m_material(material)
     {}
     Vec3 center() const{
         return m_center;
@@ -37,6 +39,7 @@ public:
         }
         hit.t = root;
         hit.point = ray.at(hit.t);
+        hit.material = m_material;
         Vec3 outward_normal = (hit.point - m_center) / m_radius;
         hit.set_face_normal(ray, outward_normal);
 
