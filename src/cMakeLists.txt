@@ -1,6 +1,12 @@
-target_sources( hazel
+file(GLOB hazel_src
+     "*.h"
+     "*.cpp"
+)
+
+target_sources( hazel 
     PUBLIC
-    ${CMAKE_CURRENT_LIST_DIR}/main.cpp
+    ${hazel_src}
 )
 
 target_include_directories(hazel PUBLIC "${PROJECT_SOURCE_DIR}/include")
+target_include_directories(hazel PUBLIC "${PROJECT_SOURCE_DIR}/src")
